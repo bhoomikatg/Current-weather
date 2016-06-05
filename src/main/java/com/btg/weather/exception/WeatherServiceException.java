@@ -12,8 +12,8 @@ public class WeatherServiceException extends Exception{
 		this.errorCode = errorCode;		
 	}
 	
-	public WeatherServiceException(ErrorCode errorCode, String message) {
-		super(message);
+	public WeatherServiceException(ErrorCode errorCode, Exception cause) {
+		super(cause);
 		this.errorCode = errorCode;		
 	}
 	
