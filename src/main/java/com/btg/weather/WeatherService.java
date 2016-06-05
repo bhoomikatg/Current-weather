@@ -9,6 +9,8 @@ import java.net.URLEncoder;
 
 import javax.xml.bind.JAXBException;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -20,7 +22,13 @@ import com.github.fedy2.weather.data.unit.DegreeUnit;
 import com.google.gson.Gson;
 
 @Service
-public class WeatherService {
+public class WeatherService implements MessageSourceAware {
+	
+	private MessageSource messageSource;
+	
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
 
 	/**
 	 * Gets weather for the given city. Uses Yahoo API.
@@ -35,8 +43,8 @@ public class WeatherService {
 	public Channel getWeather(String city) throws WeatherServiceException {
 		YahooWeatherService service;
 		Channel channel = null;
-		if (StringUtils.isEmpty(city)) {
-			throw new WeatherServiceException(ErrorCode.CITY_NOT_VALID);
+		if (StringUtils.isEmpty(city)) {			
+			throw new WeatherServiceException(messageSource.getMessage(ErrorCode.CITY_INVALID, null, null));
 		}
 		try {
 			// find woeid(where on earth identifier) for the given city
@@ -47,7 +55,7 @@ public class WeatherService {
 						DegreeUnit.CELSIUS);
 			}
 		} catch (JAXBException | IOException e) {
-			throw new WeatherServiceException(ErrorCode.GENERIC_ERROR, e);
+			throw new WeatherServiceException(messageSource.getMessage(ErrorCode.GENERIC_ERROR, null, null), e);
 		}
 		return channel;
 	}

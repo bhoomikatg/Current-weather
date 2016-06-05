@@ -6,23 +6,23 @@ public class WeatherServiceException extends Exception{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ErrorCode errorCode;
+	private String errorCode;
 	
-	public WeatherServiceException(ErrorCode errorCode) {
+	public WeatherServiceException(String errorCode) {
 		this.errorCode = errorCode;		
 	}
 	
-	public WeatherServiceException(ErrorCode errorCode, Exception cause) {
+	public WeatherServiceException(String errorCode, Exception cause) {
 		super(cause);
 		this.errorCode = errorCode;		
 	}
 	
-	public WeatherServiceException(ErrorCode errorCode, String message, Exception cause) {
+	public WeatherServiceException(String errorCode, String message, Exception cause) {
 		super(message, cause);
 		this.errorCode = errorCode;	
 	}
 	
-	public ErrorCode getErrorCode() {
+	public String getErrorCode() {
 		return errorCode;
 	}
 }

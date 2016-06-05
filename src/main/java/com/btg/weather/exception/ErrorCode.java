@@ -1,10 +1,6 @@
 package com.btg.weather.exception;
 
-public enum ErrorCode {
-	CITY_NOT_VALID(1),
-	GENERIC_ERROR(2);
-	public int errorCode;
-	private ErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+public class ErrorCode {
+	public static final String CITY_INVALID = "city.invalid";
+	public static final String GENERIC_ERROR = "generic.error";
 }
