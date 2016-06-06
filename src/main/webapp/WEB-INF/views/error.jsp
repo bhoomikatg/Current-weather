@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<p>An error occurred, We should be up and running soon.</p>
+<p>An error occurred, please try again later.</p>
 
 </body>
 </html>;

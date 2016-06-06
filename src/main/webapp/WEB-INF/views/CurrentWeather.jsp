@@ -25,9 +25,6 @@
  <br>
  <c:set var="city" scope="session" value="${wb.city}"/>
  <c:set var="error" scope="session" value="${exception.errorCode}"/>
- <c:if test="${not empty error}">
- <h3>${exception.errorCode}</h3>
- </c:if>
 <c:if test="${not empty city}">
  <table border="1">
 <tr>
