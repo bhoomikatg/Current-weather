@@ -1,16 +1,27 @@
 package com.btg.weather;
-import org.junit.Assert;
-import org.junit.Test;
 
-import com.btg.weather.WeatherService;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.context.MessageSource;
+
 import com.btg.weather.exception.ErrorCode;
 import com.btg.weather.exception.WeatherServiceException;
 import com.github.fedy2.weather.data.Channel;
 
-
+@RunWith (MockitoJUnitRunner.class)
 public class WeatherServiceTest {
-	WeatherService weatherService = new WeatherService();
-
+	@Mock MessageSource messageSource;
+	@InjectMocks WeatherService weatherService = new WeatherService();
+	@Before
+	public void setUp() {
+		Mockito.when(messageSource.getMessage(ErrorCode.CITY_INVALID, null, null)).thenReturn(ErrorCode.CITY_INVALID);
+	}
 	@Test
 	public void testGetWeatherWithCityAsNull() {
 		try {
