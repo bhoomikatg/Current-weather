@@ -52,14 +52,12 @@ public class WeatherController {
 	{	
 		Channel ch = null;
 			ch = weatherService.getWeather(wb.getCity());	
-			System.out.println(ch);
 			if (ch != null){
 				wb.setWindSpeed(ch.getWind().getSpeed());
 				wb.setTemprature(ch.getItem().getCondition().getTemp());
 				wb.setWeather(ch.getItem().getCondition().getText());
 				
 				wb.setUpdatedTime(ch.getItem().getCondition().getDate());
-				System.out.println(wb.getUpdatedTime());
 			}
 			return wb;	
 	}
