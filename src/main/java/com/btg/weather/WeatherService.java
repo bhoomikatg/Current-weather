@@ -52,7 +52,7 @@ public class WeatherService implements MessageSourceAware {
 			if (woeid != null) {
 				service = new YahooWeatherService();
 				channel = service.getForecast(woeid.toString(),
-						DegreeUnit.CELSIUS);
+						DegreeUnit.CELSIUS);				
 			}
 		} catch (JAXBException | IOException e) {
 			throw new WeatherServiceException(messageSource.getMessage(ErrorCode.GENERIC_ERROR, null, null), e);

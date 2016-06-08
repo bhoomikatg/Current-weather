@@ -14,17 +14,6 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<bean
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="exceptionMappings">
-			<props>
-				<prop key="com.btg.weather.exception.WeatherServiceException">
-					ExceptionPage
-				</prop>
-			</props>
-		</property>
-		<property name="defaultErrorView" value="error" />
-	</bean>
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
